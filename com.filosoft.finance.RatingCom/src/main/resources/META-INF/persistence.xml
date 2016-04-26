@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="RatingA"  >
+		<class>com.company.rating.domain.Cevap</class>
+		<class>com.company.rating.domain.CevapPK</class>
+		<class>com.company.rating.domain.Degerlendirme</class>
+		<class>com.company.rating.domain.Degerlendirmeagaci</class>
+		<class>com.company.rating.domain.DegerlendirmeagaciPK</class>
+		<class>com.company.rating.domain.Firma</class>
+		<class>com.company.rating.domain.Firmasektor</class>
+		<class>com.company.rating.domain.FirmasektorPK</class>
+		<class>com.company.rating.domain.Firmatipi</class>
+		<class>com.company.rating.domain.Kalitatifdegerlendirme</class>
+		<class>com.company.rating.domain.KalitatifdegerlendirmePK</class>
+		<class>com.company.rating.domain.KalitatifdegerlendirmeKayit</class>
+		<class>com.company.rating.domain.KalitatifdegerlendirmeKayitPK</class>
+		<class>com.company.rating.domain.Kantitatifdegerlendirme</class>
+		<class>com.company.rating.domain.KantitatifdegerlendirmePK</class>
+	
+		<class>com.company.rating.domain.Kriter</class>
+		<class>com.company.rating.domain.Kullanici</class>
+		<class>com.company.rating.domain.Puanlar</class>
+		<class>com.company.rating.domain.PuanlarPK</class>
+		<class>com.company.rating.domain.Sektor</class>
+		<class>com.company.rating.domain.Soru</class>
+		<class>com.company.rating.domain.Yetkilendirme</class>
+		<class>com.company.rating.domain.YetkilendirmePK</class>
+	
+		<class>com.company.rating.domain.Firmafile</class>
+		<class>com.company.rating.domain.FirmafilePK</class>
+		<class>com.company.rating.domain.Gelirbilancocode</class>
+		<class>com.company.rating.domain.Gelirbilancokayit</class>
+		<class>com.company.rating.domain.GelirbilancokayitPK</class>
+		<class>com.company.rating.domain.Otomatikcevap</class>
+		<class>com.company.rating.domain.OtomatikcevapPK</class>
+
+
+	
+
+		
+	
+	</persistence-unit>
+
+</persistence>

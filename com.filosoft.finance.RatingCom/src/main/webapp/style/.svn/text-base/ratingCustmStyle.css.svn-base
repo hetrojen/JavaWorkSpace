@@ -1,0 +1,298 @@
+@CHARSET "UTF-8";
+
+.header {
+	font-family: sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: medium;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: left;
+	text-indent: 0ex;
+}
+
+.derecelendirmeA {
+	font-family: sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 3em;
+	color: #00b050;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: left;
+	text-indent: 0ex;
+}
+
+.derecelendirmeB {
+	font-family: sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 3em;
+	color: #00ee6c;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: left;
+	text-indent: 0ex;
+}
+
+.derecelendirmeC {
+	font-family: sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 3em;
+	color: yellow;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: left;
+	text-indent: 0ex;
+}
+
+.derecelendirmeD {
+	font-family: sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 3em;
+	color: #ffc000;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: left;
+	text-indent: 0ex;
+}
+
+.derecelendirmeE {
+	font-family: sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	font-size: 3em;
+	color: red;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-align: left;
+	text-indent: 0ex;
+}
+
+.lenghtHeader {
+	font-weight: bold;
+	font-family: sans-serif;
+	font-style: normal;
+	font-size: 1em;
+}
+
+.commandLink {
+	font-family: sans-serif;
+	font-size: 1em;
+	color: #4233a3;
+}
+
+.commandLinkSelected {
+	font-family: sans-serif;
+	font-size: 1em;
+	color: #e8c990;
+}
+
+.commandLinkEx {
+	font-family: sans-serif;
+	font-size: 1.2em;
+	color: #4233a3;
+}
+
+/*	----------------------------------*/
+/*.ui-widget { font-family: Verdana,Arial,sans-serif; font-size: .9em; }*/
+/*.ui-widget .ui-widget { font-size: .8em; }*/
+/*.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: .8em; }*/
+/*.ui-widget-content { }*/
+/*.ui-widget-content a { color: #222222; }*/
+/*.ui-widget-header { border: 1px solid #969696; background: #a9abad url(../custom-theme/images/ui-bg_highlight-soft_88_a9abad_1x100.png) 50% 50% repeat-x; color: #222222; font-weight: bold; }*/
+/*.ui-widget-header a { color: #222222; }*/
+.
+.degerlendirmePanel {
+	border: 1px solid #aaaaaa;
+	margin: 0px;
+	padding: 0px;
+	border-collapse: collapse;
+}
+
+.degerlendirmePanel td {
+	border: 1px solid #aaaaaa;
+	margin: 0px;
+	padding: 0px;
+	border-collapse: collapse;
+}
+
+.kriterPanel {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.kriterPanel td {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.degerlendirmeHeader {
+	border: 1px solid #969696;
+	background: #a9abad
+		url(../custom-theme/images/ui-bg_highlight-soft_88_a9abad_1x100.png)
+		50% 50% repeat-x;
+	color: #222222;
+	font-weight: bold;
+}
+
+.outputL {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: .9em;
+	border: 0px;
+}
+
+.outputLB {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: .9em;
+	border: 0px;
+	font-weight: bold;
+}
+
+.ui-menubar-item-label {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.ui-menu-item-label {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.menuPanel {
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.alignCenter {
+	text-align: center;
+}
+
+.kantitatifGrPanel  ui-widget-content {
+	border: 0px !important;
+}
+
+/*Login stylse */
+.labelL2 {
+	color: #ffffff;
+	font-style: normal;
+	font-size: 17px;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-weight: bold;
+}
+
+.labelL1 {
+	color: #7C7C7C;
+	font-style: normal;
+	font-size: 13px;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-weight: bold;
+}
+
+.inputT {
+
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-top-style: solid;
+	border-left-color: #7C7C7C;
+	border-top-color: #7C7C7C;
+	border-left-style: solid;
+	border-right-color: #7C7C7C;
+	border-right-width: 2px;
+	border-right-style: solid;
+	border-left-width: 2px;
+	border-bottom-color: #7C7C7C;
+	border-top-width: 2px;
+	width: 157px;
+}
+
+.loginPanel {
+	background-color: #F0F0F0;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-top-style: solid;
+	border-left-color: #7C7C7C;
+	border-top-color: #7C7C7C;
+	border-left-style: solid;
+	border-right-color: #7C7C7C;
+	border-right-width: 2px;
+	border-right-style: solid;
+	border-left-width: 2px;
+	border-bottom-color: #7C7C7C;
+	border-top-width: 2px;
+	z-index: 10000;
+}
+
+.loginPanel2 {
+	border-bottom-width: 2px;
+	border-left-color: #A36F0E;
+	border-top-color: #A36F0E;
+	border-right-color: #A36F0E;
+	border-right-width: 2px;
+	background-color: #EEA51E;
+	border-left-width: 2px;
+	border-bottom-color: #A36F0E;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+}
+
+.loginButtom {
+	border-bottom-width: 2px;
+	border-left-color: #A36F0E;
+	border-top-color: #A36F0E;
+	border-right-color: #A36F0E;
+	border-right-width: 2px;
+	background-color: #EEA51E;
+	border-left-width: 2px;
+	border-bottom-color: #A36F0E;
+	border-top-width: 2px;
+	border-bottom-style: solid;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	color: #FFFFFF;
+	font-style: normal;
+	font-size: 15px;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-weight: bold;
+}
+.errorLogin{
+		color: #cd0a0;
+	font-style: normal;
+	font-size: 13px;
+	font-family: Verdana, Arial, Sans-Serif;
+
+	
+	}

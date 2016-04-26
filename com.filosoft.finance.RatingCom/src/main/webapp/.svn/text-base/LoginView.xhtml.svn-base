@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<f:view contentType="text/html">
+
+<h:head>
+
+	<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/style/ratingCustmStyle.css" />
+</h:head>
+
+
+
+	<h:body style="background-color: #F0F0F0;">
+
+
+		<table style="width: 100%; height: 100%; background-color: #F0F0F0;">
+			<tr>
+				<td width="20%"></td>
+				<td width="60%" align="center"><h:outputText
+					styleClass="header"
+					value="KURUMSAL / TİCARİ FİRMA  RİSK DERECELENDİRME SİSTEMİ"></h:outputText><br /><br /></td>
+				<td width="20%"><h:graphicImage value="/img/riskActifLogo.png"></h:graphicImage></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="3" style=" width: 100% ">
+				<div style="width: 500px; color: #CD4B58"> <h:messages id="messages" errorClass="errorLogin" styleClass="errorLogin"/><br /></div>
+				<br /><div class="loginPanel" style="width: 500px; height: 246px">
+				
+				
+				<br /><div class="loginPanel2" style="height: 21px; width: 444px"><h:outputLabel	value="KULLANICI GİRİŞİ" styleClass="labelL2"></h:outputLabel></div>
+
+
+<h:form id="login">
+					<br /><br /><h:panelGrid columns="2" style="text-align:left">
+
+						<h:outputLabel value="Kullanıcı adı:" styleClass="labelL1" />
+						<h:inputText value="#{loginView.kullanici.username}" styleClass="inputT">
+
+						</h:inputText>
+						<h:outputText value="Şifre:" styleClass="labelL1" />
+						<h:inputSecret styleClass="inputT" value="#{loginView.kullanici.sifre}" />
+
+						<h:outputLabel value=""></h:outputLabel>
+						<h:commandButton value="Giriş Yap" action="#{loginView.login}" styleClass="loginButtom"/>
+
+
+					</h:panelGrid>
+				</h:form> <br />
+
+				</div>
+				</td>
+			</tr>
+		</table>
+
+
+
+
+
+
+	</h:body>
+</f:view>
+
+</html>
+

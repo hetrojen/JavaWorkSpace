@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+		<meta http-equiv="content-type" content="text/xhtml; charset=UTF-8" />
+		<ui:insert name="head">
+		</ui:insert>
+
+
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/themes/custom-theme/themeR.css" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/style/ratingCustmStyle.css" />
+		<script type="text/javascript"
+			src="#{request.contextPath}/scripts/customGf.js"></script>
+		<script type="text/javascript"
+			src="#{request.contextPath}/scripts/raphael.js"></script>
+
+	</h:head>
+	<h:body
+		onload="onLoadRatin(#{sesionBean.ratingViewForm.kantitatifHesButDis});">
+		<h:outputScript name="jsf.js" library="javax.faces" target="head" />
+
+
+		<h:panelGroup layout="block" 
+			style="width:100%;height:100%;">
+			<h:panelGroup layout="block"  styleClass="mainTemplateTop"  style="width:100%;height:59px;position: absolute; top: 2px; left: 3px">
+				<h:form>
+					<h:panelGrid columns="2" style="width:100%;">
+						<h:panelGrid columns="2" style="text-align:left;">
+							<h:outputLabel value="Firma:" styleClass="outputLB"></h:outputLabel>
+							<h:outputLabel value="#{generalData.firma.firmaName}"
+								styleClass="outputL"></h:outputLabel>
+
+							<h:outputLabel value="Kullanıcı:" styleClass="outputLB"></h:outputLabel>
+							<h:outputLabel value="#{generalData.kullanici.username}"
+								styleClass="outputL"></h:outputLabel>
+						</h:panelGrid>
+						<h:panelGrid style="width:100%" columnClasses="alignRight">
+							<h:graphicImage value="/img/riskActifLogo.png"></h:graphicImage>
+
+
+						</h:panelGrid>
+					</h:panelGrid>
+
+				</h:form>
+			</h:panelGroup>
+       
+				<h:panelGroup styleClass="mainTemplateDivMenu"  style="width:263px;height:100%;vertical-align:text-top;position: absolute; top: 70px; left: 3px">
+
+					<h:form>
+						<h:panelGrid columns="1" style="vertical-align: top;">
+							<p:accordionPanel style="width:255px; height:330px;vertical-align:text-top;"
+								activeIndex="#{generalData.activeMenuGroupId}">
+								<p:tab title="Genel">
+									<h:panelGrid columnClasses="menuPanel" columns="1">
+										<p:commandLink ajax="false"
+											action="#{template.startGelirBilancoCreate}">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='00') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Gelir Tablosu/Bilanço"></h:outputLabel>
+										</p:commandLink>
+										<p:commandLink ajax="false"
+											action="#{template.startDegerlendirme}"
+											rendered="#{!generalData.degerlendirmeStarted}">
+											<h:outputLabel styleClass="commandLink" value="Değerlendirme"></h:outputLabel>
+										</p:commandLink>
+
+									</h:panelGrid>
+
+
+								</p:tab>
+								<p:tab title="Değerlendirme"
+									rendered="#{generalData.degerlendirmeStarted}">
+									<h:panelGrid columnClasses="menuPanel" columns="1">
+										<p:commandLink
+											action="#{template.startKantitatifDegerlendirme}"
+											ajax="false">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='10') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Kantitatif"></h:outputLabel>
+										</p:commandLink>
+										<p:commandLink
+											action="#{template.startKalitatifDegerlendirme}" ajax="false">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='11') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Kalitatif"></h:outputLabel>
+										</p:commandLink>
+										<p:commandLink action="#{template.startSonucDegerlendirme}"
+											ajax="false">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='12') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Sonuç"></h:outputLabel>
+										</p:commandLink>
+									</h:panelGrid>
+								</p:tab>
+								<p:tab title="Analiz Kısmı"
+									rendered="#{generalData.degerlendirmeStarted}">
+									<h:panelGrid columnClasses="menuPanel" columns="1">
+										<p:commandLink action="#{template.dikeyAnaliz}" ajax="false">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='20') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Dikey Analiz"></h:outputLabel>
+										</p:commandLink>
+										<p:commandLink action="#{template.yatayAnaliz}" ajax="false">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='21') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Yatay Analiz"></h:outputLabel>
+										</p:commandLink>
+
+										<h:outputLabel value="Rasyo Analiz" styleClass="commandLink"></h:outputLabel>
+
+										<h:panelGrid columns="2">
+
+											<h:outputLabel value="  "></h:outputLabel>
+											<p:commandLink ajax="false"
+												action="#{template.rasyoAnaliz_grafik}">
+												<h:outputLabel
+													styleClass="#{(template.activeLink=='22') ? 'commandLinkSelected' : 'commandLink'}"
+													value="Grafik"></h:outputLabel>
+											</p:commandLink>
+											<h:outputLabel value="  "></h:outputLabel>
+											<p:commandLink ajax="false"
+												action="#{template.rasyoAnaliz_rasyo}">
+												<h:outputLabel
+													styleClass="#{(template.activeLink=='23') ? 'commandLinkSelected' : 'commandLink'}"
+													value="Rasyo"></h:outputLabel>
+											</p:commandLink>
+
+										</h:panelGrid>
+									</h:panelGrid>
+								</p:tab>
+								<p:tab title="Raporlamalar"
+									rendered="#{generalData.degerlendirmeStarted}">
+									<h:panelGrid columns="1">
+
+										<p:commandLink ajax="false" action="#{template.raporUret}">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='30') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Rapor Oluştur"></h:outputLabel>
+										</p:commandLink>
+										<!---->
+									</h:panelGrid>
+
+
+								</p:tab>
+								<p:tab title="Admin İşlemleri"
+									rendered="#{generalData.userAdmin}">
+									<h:panelGrid columns="1">
+										<p:commandLink action="#{template.startFirmaTanimlama}"
+											ajax="false">
+											<h:outputLabel
+												styleClass="#{(template.activeLink=='40' || template.activeLink=='10') ? 'commandLinkSelected' : 'commandLink'}"
+												value="Firma Tanımlama"></h:outputLabel>
+										</p:commandLink>
+
+									</h:panelGrid>
+								</p:tab>
+
+							</p:accordionPanel>
+							<h:panelGrid columns="1" style="width:100%; aling:top;"
+								columnClasses="alignCenter">
+								<p:commandLink ajax="false" action="#{template.cikis}">
+
+									<h:outputLabel styleClass="commandLinkEx" value="Çıkış"></h:outputLabel>
+								</p:commandLink>
+
+							</h:panelGrid>
+						</h:panelGrid>
+					</h:form>
+
+				</h:panelGroup>
+				<h:panelGrid styleClass="mainTemplateDivCont" columnClasses="maintempmenucol"  style="width:84%;height:100%;position: absolute; top: 70px; left: 268px;">
+					<ui:insert name="center"></ui:insert>
+				</h:panelGrid>
+		
+
+		</h:panelGroup>
+
+
+
+	</h:body>
+</f:view>
+
+</html>

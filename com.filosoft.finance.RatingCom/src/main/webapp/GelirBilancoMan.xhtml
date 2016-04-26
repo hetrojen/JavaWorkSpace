@@ -1,0 +1,732 @@
+
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="templates/mainTemplate.xhtml">
+
+
+
+	<ui:define name="center">
+
+		<p:tabView dynamic="true">
+			<p:tab title="Bilanço Tablosu">
+				<p:tabView dynamic="true">
+					<p:tab title="Aktif Varlıklar">
+
+						<p:panel collapsed="true" toggleable="true"
+							header="Dönen Varlıklar">
+
+							<h:panelGrid id="donenP">
+								<h:form id="donenF">
+									<p:commandButton value="Hesapla" update="donenP,kaydetF"></p:commandButton>
+									<p:dataTable style="margin:0; padding:0;" id="donen"
+										var="varlik" value="#{gelirBilancoViewData.donenVarliklar}">
+
+										<p:column>
+
+											<h:outputLabel value="#{varlik.codeText}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<h:outputLabel value="#{varlik.gelirbilancocode.name}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="önceki Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.oncekidonem}"
+												disabled="#{varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariDonem}"
+												disabled="#{varlik.disableDonem || gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem(revize)"></h:outputText>
+											</f:facet>
+											<h:inputText disabled="true" value="#{varlik.revizeCari}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+
+											</h:inputText>
+
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Revizyon"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariRevizyon}"
+												rendered="#{!varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+
+										</p:column>
+
+										<!--											<f:facet name="footer">-->
+										<!--												<h:panelGrid id="varlikTop" columns="3">-->
+										<!--													<h:outputText value="DÖNENE VARLIKLAR TOPLAMI:">-->
+										<!--													</h:outputText>-->
+										<!--													<h:outputText value="rr"></h:outputText>-->
+										<!--													<h:outputText value="ff"></h:outputText>-->
+										<!--												</h:panelGrid>-->
+										<!--											</f:facet>-->
+
+
+									</p:dataTable>
+									<p:commandButton value="Hesapla" update="donenP,kaydetF"></p:commandButton>
+								</h:form>
+							</h:panelGrid>
+						</p:panel>
+						<p:panel collapsed="true" toggleable="true"
+							header="Duran Varlıklar">
+							<h:panelGrid id="duranP">
+								<h:form id="duranF">
+									<p:commandButton value="Hesapla" update="duranP,kaydetF"></p:commandButton>
+									<p:dataTable id="duran" var="varlik"
+										value="#{gelirBilancoViewData.duranVarliklar}">
+
+										<p:column>
+
+											<h:outputLabel value="#{varlik.codeText}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<h:outputLabel value="#{varlik.gelirbilancocode.name}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="önceki Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.oncekidonem}"
+												disabled="#{varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariDonem}"
+												disabled="#{varlik.disableDonem || gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem(revize)"></h:outputText>
+											</f:facet>
+											<h:inputText disabled="true" value="#{varlik.revizeCari}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+
+											</h:inputText>
+
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Revizyon"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariRevizyon}"
+												rendered="#{!varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<!--											<f:facet name="footer">-->
+										<!--												<h:panelGrid id="varlikTop" columns="3">-->
+										<!--													<h:outputText value="DURAN VARLIKLAR TOPLAMI:">-->
+										<!--													</h:outputText>-->
+										<!--													<h:inputText value="rr"></h:inputText>-->
+										<!--													<h:inputText value="ff"></h:inputText>-->
+										<!--												</h:panelGrid>-->
+										<!--											</f:facet>-->
+
+
+									</p:dataTable>
+									<p:commandButton value="Hesapla" update="duranP,kaydetF"></p:commandButton>
+								</h:form>
+							</h:panelGrid>
+
+						</p:panel>
+
+					</p:tab>
+					<p:tab title="Pasif Kaynaklar">
+
+						<p:panel collapsed="true" toggleable="true"
+							header="Kısa Vadeli Yabancı Kaynaklar">
+							<h:panelGrid id="kisaP">
+								<h:form id="kisaF">
+									<p:commandButton value="Hesapla" update="kisaP,kaydetF"></p:commandButton>
+									<p:dataTable id="kisa" var="varlik"
+										value="#{gelirBilancoViewData.kisaVadeliYabanci}">
+
+										<p:column>
+
+											<h:outputLabel value="#{varlik.codeText}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<h:outputLabel value="#{varlik.gelirbilancocode.name}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="önceki Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.oncekidonem}"
+												disabled="#{varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariDonem}"
+												disabled="#{varlik.disableDonem || gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem(revize)"></h:outputText>
+											</f:facet>
+											<h:inputText disabled="true" value="#{varlik.revizeCari}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+
+											</h:inputText>
+
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Revizyon"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariRevizyon}"
+												rendered="#{!varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<!--											<f:facet name="footer">-->
+										<!--												<h:panelGrid id="varlikTop" columns="3">-->
+										<!--													<h:outputText-->
+										<!--														value="KISA VADELİ YABANCI KAYNAKLAR  TOPLAMI:">-->
+										<!--													</h:outputText>-->
+										<!--													<h:outputText value="rr"></h:outputText>-->
+										<!--													<h:outputText value="ff"></h:outputText>-->
+										<!--												</h:panelGrid>-->
+										<!--											</f:facet>-->
+
+
+									</p:dataTable>
+									<p:commandButton value="Hesapla" update="kisaP,kaydetF"></p:commandButton>
+								</h:form>
+							</h:panelGrid>
+						</p:panel>
+						<p:panel collapsed="true" toggleable="true"
+							header="Uzun Vadeli Yabancı Kaynaklar">
+							<h:panelGrid id="yabanciP">
+								<h:form id="yabanciF">
+									<p:commandButton value="Hesapla" update="yabanciP,kaydetF"></p:commandButton>
+									<p:dataTable id="yabanci" var="varlik"
+										value="#{gelirBilancoViewData.uzunVadeliYabancikaynaklar}">
+
+										<p:column>
+
+											<h:outputText value="#{varlik.codeText}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<h:outputText value="#{varlik.gelirbilancocode.name}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="önceki Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.oncekidonem}"
+												disabled="#{varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariDonem}"
+												disabled="#{varlik.disableDonem || gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem(revize)"></h:outputText>
+											</f:facet>
+											<h:inputText disabled="true" value="#{varlik.revizeCari}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+
+											</h:inputText>
+
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Revizyon"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariRevizyon}"
+												rendered="#{!varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<!--											<f:facet name="footer">-->
+										<!--												<h:panelGrid id="varlikTop" columns="3">-->
+										<!--													<h:outputText-->
+										<!--														value="UZUN VADELİ YABANCI KAYNAKLAR TOPLAMI:">-->
+										<!--													</h:outputText>-->
+										<!--													<h:outputText value="rr"></h:outputText>-->
+										<!--													<h:outputText value="ff"></h:outputText>-->
+										<!--												</h:panelGrid>-->
+										<!--											</f:facet>-->
+
+
+									</p:dataTable>
+									<p:commandButton value="Hesapla" update="yabanciP,kaydetF"></p:commandButton>
+								</h:form>
+							</h:panelGrid>
+						</p:panel>
+						<p:panel collapsed="true" toggleable="true" header="Öz Kaynaklar">
+							<h:panelGrid id="ozkaynaklarP">
+								<h:form id="ozkaynaklarF">
+									<p:commandButton value="Hesapla" update="ozkaynaklarP,kaydetF"></p:commandButton>
+									<p:dataTable id="ozkaynaklar" var="varlik"
+										value="#{gelirBilancoViewData.ozkaynaklar}">
+
+										<p:column>
+
+											<h:outputText value="#{varlik.codeText}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<h:outputText value="#{varlik.gelirbilancocode.name}"
+												styleClass="#{varlik.styleClass}" />
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="önceki Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.oncekidonem}"
+												disabled="#{varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+
+										<p:column>
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariDonem}"
+												disabled="#{varlik.disableDonem || gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Cari Dönem(revize)"></h:outputText>
+											</f:facet>
+											<h:inputText disabled="true" value="#{varlik.revizeCari}"
+												style="text-align:right" size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+
+											</h:inputText>
+
+										</p:column>
+										<p:column
+											rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+											<f:facet name="header">
+												<h:outputText value="Revizyon"></h:outputText>
+											</f:facet>
+											<h:inputText value="#{varlik.cariRevizyon}"
+												rendered="#{!varlik.disableDonem}" style="text-align:right"
+												size="15">
+
+												<f:convertNumber pattern="#,##0.00"
+													locale="#{sesionBean.trlocal}" />
+												<f:ajax event="blur" render="@this" />
+											</h:inputText>
+										</p:column>
+										<!---->
+										<!--											<f:facet name="footer">-->
+										<!--												<h:panelGrid id="varlikTop" columns="3">-->
+										<!--													<h:outputText value="ÖZKAYNAKLAR TOPLAMI:">-->
+										<!--													</h:outputText>-->
+										<!--													<h:outputText value="rr"></h:outputText>-->
+										<!--													<h:outputText value="ff"></h:outputText>-->
+										<!--												</h:panelGrid>-->
+										<!--											</f:facet>-->
+
+
+									</p:dataTable>
+									<p:commandButton value="Hesapla" update="ozkaynaklarP,kaydetF"></p:commandButton>
+								</h:form>
+							</h:panelGrid>
+						</p:panel>
+
+					</p:tab>
+
+				</p:tabView>
+			</p:tab>
+			<p:tab title="Gelir Tablosu">
+
+				<h:panelGrid id="gelirP">
+					<h:form id="gelirF">
+						<p:commandButton value="Hesapla" update="gelirP"
+							action="#{gelirBilancoView.hesaplaGelir}" />
+						<p:dataTable id="gelir" var="varlik"
+							value="#{gelirBilancoViewData.gelirTablosu}">
+
+							<p:column>
+
+								<h:outputLabel value="#{varlik.codeText}"
+									styleClass="#{varlik.styleClass}" />
+							</p:column>
+
+							<p:column>
+								<h:outputLabel value="#{varlik.gelirbilancocode.name}"
+									styleClass="#{varlik.styleClass}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="önceki Dönem"></h:outputText>
+								</f:facet>
+								<h:inputText value="#{varlik.oncekidonem}"
+									disabled="#{varlik.disableDonem}" style="text-align:right"
+									size="15">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+									<f:ajax event="blur" render="@this" />
+								</h:inputText>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Cari Dönem"></h:outputText>
+								</f:facet>
+								<h:inputText value="#{varlik.cariDonem}"
+									disabled="#{varlik.disableDonem || gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}"
+									style="text-align:right" size="15">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+									<f:ajax event="blur" render="@this" />
+								</h:inputText>
+							</p:column>
+							<p:column
+								rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+								<f:facet name="header">
+									<h:outputText value="Cari Dönem(revize)"></h:outputText>
+								</f:facet>
+								<h:inputText disabled="true" value="#{varlik.revizeCari}"
+									style="text-align:right" size="15">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+
+								</h:inputText>
+
+							</p:column>
+							<p:column
+								rendered="#{gelirBilancoViewData.fromExcelUpload || gelirBilancoViewData.fromExistingKayit}">
+								<f:facet name="header">
+									<h:outputText value="Revizyon"></h:outputText>
+								</f:facet>
+								<h:inputText value="#{varlik.cariRevizyon}"
+									rendered="#{!varlik.disableDonem}" style="text-align:right"
+									size="15">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+									<f:ajax event="blur" render="@this" />
+								</h:inputText>
+							</p:column>
+
+
+
+
+						</p:dataTable>
+						<p:commandButton value="Hesapla" update="gelirP"
+							action="#{gelirBilancoView.hesaplaGelir}" />
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Kaydet">
+				<h:panelGrid id="kaydetP" columns="1">
+					<h:form id="kaydetF">
+						<p:messages></p:messages>
+						<p:panel header="Aktif Varlıklar">
+							<h:panelGrid columns="3">
+
+								<h:outputLabel></h:outputLabel>
+								<h:outputLabel value="Önceki Dönem" style="text-align:center;" styleClass="header"></h:outputLabel>
+								<h:outputLabel value="Cari Dönem" style="text-align:center;" styleClass="header"></h:outputLabel>
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="DÖNEN VARLIKLAR TOPLAMI" />
+								</h:panelGrid>
+
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.donenVarliklarToplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.donenVarliklarToplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="DURAN VARLIKLAR TOPLAMI" />
+								</h:panelGrid>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.duranVarliklarToplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.duranVarliklarToplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="AKTİF (VARLIKLAR) TOPLAMI" />
+								</h:panelGrid>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.aktifVarliklarToplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.aktifVarliklarToplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+
+
+							</h:panelGrid>
+						</p:panel>
+						<p:panel header="Pasif Kaynaklar">
+							<h:panelGrid columns="3">
+							
+								<h:outputLabel></h:outputLabel>
+								<h:outputLabel value="Önceki Dönem" style="text-align:center;" styleClass="header"></h:outputLabel>
+								<h:outputLabel value="Cari Dönem" style="text-align:center;" styleClass="header"></h:outputLabel>
+								
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="KISA VADELİ YABANCI KAYNAKLAR TOPLAMI" />
+								</h:panelGrid>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.kisaVadeliYabanciToplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.kisaVadeliYabanciToplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="UZUN VADELİ YABANCI KAYNAKLAR TOPLAMI" />
+								</h:panelGrid>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.uzunVadeliYabancikaynaklartoplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.uzunVadeliYabancikaynaklartoplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="ÖZKAYNAKLAR TOPLAMI" />
+								</h:panelGrid>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.ozkaynaklarToplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.ozkaynaklarToplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:panelGrid style="width:450px;">
+									<h:outputLabel styleClass="outputLB"
+										value="PASİF KAYNAKLAR TOPLAMI" />
+								</h:panelGrid>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.pasifKaynaklarToplam.oncekidonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+								<h:inputText disabled="true" style="text-align:right; "
+									size="15"
+									value="#{gelirBilancoViewData.pasifKaynaklarToplam.cariDonem}">
+
+									<f:convertNumber pattern="#,##0.00"
+										locale="#{sesionBean.trlocal}" />
+								</h:inputText>
+							</h:panelGrid>
+						</p:panel>
+						<p:commandButton value="Kaydet" update="kaydetF"
+							action="#{gelirBilancoView.kaydetGelirBilanco}"></p:commandButton>
+					</h:form>
+				</h:panelGrid>
+
+			</p:tab>
+		</p:tabView>
+
+
+	</ui:define>
+</ui:composition>
+

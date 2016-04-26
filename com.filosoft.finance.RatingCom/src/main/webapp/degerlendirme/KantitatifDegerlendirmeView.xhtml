@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui" template="../templates/mainTemplate.xhtml">
+	
+	<ui:define name="center">
+
+	   <h:form id="degerlendirme">
+		<p:panel header="KANTİTATİF DEĞERLENDİRME">
+			<p:panel id="kantitatifToplam" style="width:1050px;">
+				<h:panelGrid style="align:right" columns="3">
+					<p:commandButton
+						disabled="#{sesionBean.ratingViewForm.kantitatifHesButDis}"
+						value="Hesapla" update="kantitatifToplam,kantitatifP"
+						action="#{kantitatifDegerlendirme.hesaplaKantitatif}"
+						oncomplete="drawNoktaTrendGraghics();"></p:commandButton>
+					<h:outputLabel value="TOPLAM SONUÇ:"></h:outputLabel>
+					<h:inputText style="text-align:right"
+						value="#{sesionBean.ratingViewForm.kantitatifToplam}" size="10"
+						disabled="true">
+					<f:convertNumber pattern="#,#0.0"
+														locale="#{sesionBean.trlocal}" />
+					</h:inputText>
+				</h:panelGrid>
+
+
+			</p:panel>
+			<p:panel binding="#{kantitatifDegerlendirme.kantitatifPanel}" style="width:1050px;"
+				id="kantitatifP">
+
+			</p:panel>
+
+		</p:panel>
+		 <h:inputHidden id="trendH" value="#{kantitatifDegerlendirme.idTrendG}"></h:inputHidden>
+          <h:inputHidden id="noktaH" value="#{kantitatifDegerlendirme.idNoktaG}"></h:inputHidden>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

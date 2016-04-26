@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../templates/mainTemplate.xhtml">
+
+	<ui:define name="center">
+		<h:form id="degerlendirme" >
+			<p:panel title="KALİTATİF DEĞERLENDİRME" style="width:1155px;">
+				      <p:panel id="kalitatifToplam" style="width:1155px;">
+                         <h:panelGrid  style="align:right" columns="4">
+                        <p:commandButton  value="Hesapla" update="kalitatifToplam,kalitatifP,sonucPa" action="#{kalitatifDegerlendirme.hesaplaKalitatif}"></p:commandButton>
+                        <p:commandButton  value="Temizle" update="kalitatifToplam,kalitatifP" action="#{kalitatifDegerlendirme.temizleKalitatif}"></p:commandButton>
+                        <h:outputLabel value="TOPLAM SONUÇ:"></h:outputLabel>
+                        <h:inputText  style="text-align:right" value="#{sesionBean.ratingViewForm.kalitatifToplam}" size="10" disabled="true">
+                       <f:convertNumber pattern="#,#0.0"	locale="#{sesionBean.trlocal}" />
+                        </h:inputText > 
+                     </h:panelGrid>
+                     </p:panel> 
+					<p:panel binding="#{kalitatifDegerlendirme.kalitatifPanel}" id="kalitatifP" style="width:1155px;">
+						
+					</p:panel>
+             
+				</p:panel>
+				</h:form>
+	</ui:define>
+
+</ui:composition>

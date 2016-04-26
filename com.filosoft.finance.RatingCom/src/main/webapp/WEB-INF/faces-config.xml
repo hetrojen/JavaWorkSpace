@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+
+<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+	<navigation-rule>
+	
+    <navigation-case> 
+      <from-outcome>uploadPage</from-outcome> 
+      <to-view-id>/UploadExcel.jsf</to-view-id> 
+    </navigation-case> 
+	  
+	</navigation-rule>
+	<navigation-rule>
+	 <navigation-case> 
+      <from-outcome>login</from-outcome> 
+      <to-view-id>/LoginView.jsf</to-view-id> 
+    </navigation-case> 
+    <navigation-case> 
+      <from-outcome>startRasyo</from-outcome> 
+      <to-view-id>/RatingMainPage.jsf</to-view-id> 
+    </navigation-case> 
+	  <navigation-case> 
+      <from-outcome>yatayAnaliz</from-outcome> 
+      <to-view-id>/grafik/YatayAnalizGrafikView.jsf</to-view-id> 
+    </navigation-case> 
+	  	  <navigation-case> 
+      <from-outcome>dikeyAnaliz</from-outcome> 
+      <to-view-id>/grafik/DikeyAnalizGrafikView.jsf</to-view-id> 
+    </navigation-case> 
+	      <navigation-case> 
+      <from-outcome>gelirBil</from-outcome> 
+      <to-view-id>/GelirBilancoMan.jsf</to-view-id> 
+    </navigation-case> 
+      <navigation-case> 
+      <from-outcome>rasyoAnalizGrafik</from-outcome> 
+      <to-view-id>/grafik/RasyoAnalizGrafikView.jsf</to-view-id> 
+    </navigation-case> 
+    
+       <navigation-case> 
+      <from-outcome>rasyoAnalizRasyo</from-outcome> 
+      <to-view-id>/grafik/RasyoAnalizRasyoView.jsf</to-view-id> 
+    </navigation-case> 
+          <navigation-case> 
+      <from-outcome>firmaTanimlama</from-outcome> 
+      <to-view-id>/FirmaUserTanimlama.jsf</to-view-id> 
+    </navigation-case> 
+      <navigation-case> 
+      <from-outcome>kantitatifDegerlendirme</from-outcome> 
+      <to-view-id>/degerlendirme/KantitatifDegerlendirmeView.jsf</to-view-id> 
+    </navigation-case> 
+         <navigation-case> 
+      <from-outcome>kalitatifDegerlendirme</from-outcome> 
+      <to-view-id>/degerlendirme/KalitatifDegerlendirmeView.jsf</to-view-id> 
+    </navigation-case> 
+      <navigation-case> 
+      <from-outcome>sonucDegerlendirme</from-outcome> 
+      <to-view-id>/degerlendirme/DegerlendirmeSonucuView.jsf</to-view-id> 
+    </navigation-case> 
+
+     
+   
+         <navigation-case> 
+      <from-outcome>raporUret</from-outcome> 
+      <to-view-id>/RaporGeneratorView.jsf</to-view-id> 
+    </navigation-case>
+	</navigation-rule>
+
+	<managed-bean>
+	 <managed-bean-name>ratingView</managed-bean-name>
+	 <managed-bean-class>com.company.rating.view.RatingView</managed-bean-class>
+	 <managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+ <lifecycle>
+  <phase-listener>com.company.rating.util.AccessControlPhaseListener</phase-listener>
+ </lifecycle>
+
+</faces-config>
