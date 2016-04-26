@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="libs/CustomerSearch.xsd.jar" sourcepath="libs/CustomerSearch.xsd_src.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="libs/AccountInvestigation.wsdl.jar" sourcepath="libs/AccountInvestigation.wsdl_src.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/CustomerSearch.wsdl.jar" sourcepath="libs/CustomerSearch.wsdl_src.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/AccountInvestigation.wsdl_interface.jar" sourcepath="libs/AccountInvestigation.wsdl_interface_src.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/CustomerSearch.wsdl_interface.jar" sourcepath="libs/CustomerSearch.wsdl_interface_src.jar"/>
+	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
