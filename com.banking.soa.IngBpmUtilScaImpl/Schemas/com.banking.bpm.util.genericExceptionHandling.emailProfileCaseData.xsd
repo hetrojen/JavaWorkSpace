@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    xmlns="http://genericExceptionHandling.util.bpm.banking.com/emailProfileCaseData"
+    xmlns:tns1="http://genericExceptionHandling.util.bpm.banking.com/emailProfileCaseData"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://genericExceptionHandling.util.bpm.banking.com/emailProfileCaseData">
+  <xsd:annotation>
+    <xsd:documentation>BOMORIGIN::/com.banking.bpm.util.genericExceptionHandling.emailProfileCaseData/Business Objects/com.banking.bpm.util.genericExceptionHandling.emailProfileCaseData.bom</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType ecore:name="BusinessProjectProfile" id="_bjyYMAN1EeWQW9Ex0ZQJ-Q"
+      name="BusinessProjectProfile">
+    <xsd:sequence>
+      <xsd:element ecore:name="projectDescription" id="_qBKAsAN1EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="0" name="projectDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ecore:name="moduleNames" id="_sKnnkAN1EeWQW9Ex0ZQJ-Q" maxOccurs="unbounded"
+          minOccurs="1" name="moduleNames">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ecore:name="emailProfile" id="_cna4FAN4EeWQW9Ex0ZQJ-Q" maxOccurs="unbounded"
+          minOccurs="0" name="emailProfile" type="EmailProfile"/>
+      <xsd:element ecore:name="projetcName" id="_yqaYsAN5EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="1" name="projetcName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="EmailProfile" id="_veelAAN1EeWQW9Ex0ZQJ-Q" name="EmailProfile">
+    <xsd:sequence>
+      <xsd:element ecore:name="toList" id="_0Hk3EAN1EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="0" name="toList">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ecore:name="subjectTemplate" id="_LnhTUAN2EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="0" name="subjectTemplate">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="300"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ecore:name="bodyTemplate" id="_Pj1-8AN2EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="0" name="bodyTemplate">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="700"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ecore:name="ccList" id="_XuMKMAN2EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="0" name="ccList">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ecore:name="numberOfEmailPerHour" id="_bxzJkAN2EeWQW9Ex0ZQJ-Q"
+          maxOccurs="1" minOccurs="0" name="numberOfEmailPerHour" type="xsd:int"/>
+      <xsd:element ecore:name="profileType" id="_f-7RUAN2EeWQW9Ex0ZQJ-Q" maxOccurs="1"
+          minOccurs="0" name="profileType" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="BusinessProjectProfileElement" type="BusinessProjectProfile"/>
+  <xsd:element name="EmailProfileElement" type="EmailProfile"/>
+</xsd:schema>

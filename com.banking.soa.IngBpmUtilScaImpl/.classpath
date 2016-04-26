@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry exported="true" kind="lib" path="libs/IngBpmUtil.wsdl_interface.jar" sourcepath="libs/IngBpmUtil.wsdl_interface_src.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/BusinessDataService.wsdl.jar" sourcepath="libs/BusinessDataService.wsdl_src.jar"/>
+	<classpathentry kind="src" output="bin" path="src"/>
+	<classpathentry exported="true" kind="lib" path="libs/IngBpmUtil.wsdl.jar" sourcepath="libs/IngBpmUtil.wsdl_src.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry exported="true" kind="lib" path="libs/BusinessDataService.wsdl_interface.jar" sourcepath="libs/BusinessDataService.wsdl_interface_src.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/EmailProfileConfiguration.xsd.jar" sourcepath="libs/EmailProfileConfiguration.xsd_src.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/com.banking.bpm.util.genericExceptionHandling.emailProfileCaseData.xsd.jar" sourcepath="libs/com.banking.bpm.util.genericExceptionHandling.emailProfileCaseData.xsd_src.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
