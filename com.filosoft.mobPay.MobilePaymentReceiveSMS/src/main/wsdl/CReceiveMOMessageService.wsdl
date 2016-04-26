@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://cservices.mikro-odeme.com.tr/mapping/generated" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://cservices.mikro-odeme.com.tr/mapping/generated">
+
+  <wsdl:types>
+
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cservices.mikro-odeme.com.tr/mapping/generated">
+
+      <s:import namespace="http://microsoft.com/wsdl/types/"/>
+
+      <s:element name="input" type="tns:CReceiveMOMessageInput"/>
+
+      <s:complexType name="CReceiveMOMessageInput">
+
+        <s:sequence>
+
+          <s:element maxOccurs="1" minOccurs="1" name="ReceivedSMSId" type="s1:guid"/>
+
+          <s:element maxOccurs="1" minOccurs="0" name="SenderGSM" type="s:string"/>
+
+          <s:element maxOccurs="1" minOccurs="0" name="ReceiverGSM" type="s:string"/>
+
+          <s:element maxOccurs="1" minOccurs="0" name="OriginalContent" type="s:string"/>
+
+          <s:element maxOccurs="1" minOccurs="0" name="FixedContent" type="s:string"/>
+
+          <s:element maxOccurs="1" minOccurs="1" name="DateReceived" type="s:dateTime"/>
+
+          <s:element maxOccurs="1" minOccurs="1" name="GsmOperator" type="s:int"/>
+
+          <s:element maxOccurs="1" minOccurs="1" name="GsmType" type="s:int"/>
+
+        </s:sequence>
+
+      </s:complexType>
+
+      <s:element name="CReceiveMOMessageOutput" type="tns:CReceiveMOMessageOutput"/>
+
+      <s:complexType name="CReceiveMOMessageOutput">
+
+        <s:sequence>
+
+          <s:element maxOccurs="1" minOccurs="1" name="StatusCode" type="s:int"/>
+
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorCode" type="s:string"/>
+
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="s:string"/>
+
+        </s:sequence>
+
+      </s:complexType>
+
+    </s:schema>
+
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+
+      <s:simpleType name="guid">
+
+        <s:restriction base="s:string">
+
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+
+        </s:restriction>
+
+      </s:simpleType>
+
+    </s:schema>
+
+  </wsdl:types>
+
+  <wsdl:message name="ReceiveMOMessageSoapIn">
+
+    <wsdl:part element="tns:input" name="input"/>
+
+  </wsdl:message>
+
+  <wsdl:message name="ReceiveMOMessageSoapOut">
+
+    <wsdl:part element="tns:CReceiveMOMessageOutput" name="ReceiveMOMessageResult"/>
+
+  </wsdl:message>
+
+  <wsdl:portType name="CReceiveMOMessageServiceSoap">
+
+    <wsdl:operation name="ReceiveMOMessage">
+
+      <wsdl:input message="tns:ReceiveMOMessageSoapIn"/>
+
+      <wsdl:output message="tns:ReceiveMOMessageSoapOut"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+  <wsdl:binding name="CReceiveMOMessageServiceSoap" type="tns:CReceiveMOMessageServiceSoap">
+
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <wsdl:operation name="ReceiveMOMessage">
+
+      <soap:operation soapAction="http://oley.com/mobilePayment/CReceiveMOMessageService" style="document"/>
+
+      <wsdl:input>
+
+        <soap:body use="literal"/>
+
+      </wsdl:input>
+
+      <wsdl:output>
+
+        <soap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+  <wsdl:binding name="CReceiveMOMessageServiceSoap12" type="tns:CReceiveMOMessageServiceSoap">
+
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <wsdl:operation name="ReceiveMOMessage">
+
+      <soap12:operation soapAction="http://oley.com/mobilePayment/CReceiveMOMessageService" style="document"/>
+
+      <wsdl:input>
+
+        <soap12:body use="literal"/>
+
+      </wsdl:input>
+
+      <wsdl:output>
+
+        <soap12:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+  <wsdl:service name="CReceiveMOMessageService">
+
+    <wsdl:port binding="tns:CReceiveMOMessageServiceSoap" name="CReceiveMOMessageServiceSoap">
+
+      <soap:address location="http://localhost/mobilePayment/ReceiveMOMessage"/>
+
+    </wsdl:port>
+
+    <wsdl:port binding="tns:CReceiveMOMessageServiceSoap12" name="CReceiveMOMessageServiceSoap12">
+
+      <soap12:address location="http://localhost/mobilePayment/ReceiveMOMessag"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>
