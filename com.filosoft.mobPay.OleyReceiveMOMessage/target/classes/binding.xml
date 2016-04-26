@@ -1,0 +1,15 @@
+<jaxws:bindings wsdlLocation="CReceiveMOMessageService.wsdl"
+          xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <!-- <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping> -->
+  <jaxws:bindings  node="wsdl:definitions/wsdl:types/xs:schema">
+      <jxb:globalBindings>
+        <jxb:javaType name="java.util.Date" xmlType="s:dateTime"
+                      parseMethod="org.apache.cxf.xjc.runtime.DataTypeAdapter.parseDateTime"
+                      printMethod="org.apache.cxf.xjc.runtime.DataTypeAdapter.printDateTime"/>
+       
+      </jxb:globalBindings>
+  </jaxws:bindings>
+</jaxws:bindings>
